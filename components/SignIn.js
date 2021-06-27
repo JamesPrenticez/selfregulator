@@ -1,3 +1,5 @@
+import { Auth } from 'aws-amplify'
+
 export default function SignIn(){
     return (
         <div>
@@ -7,10 +9,6 @@ export default function SignIn(){
 
             <button onClick={() => Auth.federatedSignIn({provider: "Facebook"})}>
                 Sign In with Facebook
-            </button>
-
-            <button onClick={() => Auth.signOut()}>
-                Sign Out 
             </button>
         </div>
     )

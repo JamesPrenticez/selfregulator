@@ -7,8 +7,8 @@ const initialState = {email: '', password: '', authCode: ''}
 
 function Profile() {
     const [uiState, setUiState] = useState(null)
-    const [formState, setFormState] = useState(initailState)
-    const [user, setUser] = userState(null)
+    const [formState, setFormState] = useState(initialState)
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
         checkUser()
@@ -16,7 +16,11 @@ function Profile() {
             try {
                 const user = await Auth.currentAuthenticatedUser()
                 setUser(user)
-            } catch(err) { setUser(null) }
+                setUiState("signedIn")
+            } catch(err) {
+                setUser(null)
+                setUiState("signIn")
+            }
         }
     }, [])
 
@@ -25,32 +29,39 @@ function Profile() {
     }
 
     return (
-        <div>
-            {
-            uiState === 'signIn' && (
-                    <SignIn 
-                    onChange={onChange}
-                    setUiState={setUiState}
-                    />
-                )
-            }
-            {
-            uiState === 'signedIn' && (
-                <div>
-                    <p
-                        className="text-x1 "
-                        >Welcome, {user.username}</p>
-                    <button
-                        onClick={() => {
-                        Auth.signOut()
-                        setUiState('signIn')
-                        setUserState(null)
-                    }}
-                    >Sign Out
-                    </button>
+        <div className="bg-gray-50 min-h-screen">
+            <div className="flex flex-col items-center">
+                <div className="max-w-full sm:w-540 mt-14">
+                    <div className="bg-white py-14 px-16 shadow-form rounded">
+                        {
+                        uiState === 'signIn' && (
+                                <SignIn 
+                                onChange={onChange}
+                                setUiState={setUiState}
+                                />
+                            )
+                        }
+                        {
+                        uiState === 'signedIn' && (
+                            <div>
+                                <p
+                                    className="text-xl"
+                                    >Welcome, {user.attributes.email}</p>
+                                <button
+                                    className="text-white w-full mt-10 bg-red-600 p-3 rounded"
+                                    onClick={() => {
+                                    Auth.signOut()
+                                    setUiState('signIn')
+                                    setUser(null)
+                                }}
+                                >Sign Out
+                                </button>
+                            </div>
+                            )
+                        }
+                    </div>
                 </div>
-                )
-            }
+            </div>
         </div>
     )
 }
