@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "selfregulatore9e744dd": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
