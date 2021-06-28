@@ -3,13 +3,18 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        mono: ['"Verdana" "Fira Mono"'],
+        display: ["Poppins"],
+        body: ["Open Sans"]
+      },
       spacing: {
         '540': '540px'
       },
       boxShadow: {
         'form': '0 15px 35px 0 rgba(60, 66, 87, .08), 0 5px 15px 0 rgba(0, 0, 0, .12)',
         'inputfocus': '0 0 0 2px #2563EB'
-      }
+      },
     },
   },
   variants: {
