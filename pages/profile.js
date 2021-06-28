@@ -1,7 +1,11 @@
 import { useState, useEffect, Profiler } from "react"
 import { Auth } from 'aws-amplify'
 import '../configureAmplify'
+import SignUp from '../components/SignUp'
+import ConfirmSignUp from "../components/ConfirmSignUp"
 import SignIn from '../components/SignIn'
+import ForgotPassword from '../components/ForgotPassword'
+import ForgotPasswordSubmit from '../components/ForgotPasswordSubmit'
 
 const initialState = {email: '', password: '', authCode: ''}
 
@@ -34,29 +38,61 @@ function Profile() {
                 <div className="max-w-full sm:w-540 mt-14">
                     <div className="bg-white py-14 px-16 shadow-form rounded">
                         {
-                        uiState === 'signIn' && (
-                                <SignIn 
-                                onChange={onChange}
-                                setUiState={setUiState}
+                            uiState === 'signUp' && (
+                                <SignUp 
+                                    onChange={onChange}
+                                    setUiState={setUiState}
                                 />
                             )
                         }
                         {
-                        uiState === 'signedIn' && (
-                            <div>
-                                <p
-                                    className="text-xl"
-                                    >Welcome, {user.attributes.email}</p>
-                                <button
-                                    className="text-white w-full mt-10 bg-red-600 p-3 rounded"
-                                    onClick={() => {
-                                    Auth.signOut()
-                                    setUiState('signIn')
-                                    setUser(null)
-                                }}
-                                >Sign Out
-                                </button>
-                            </div>
+                            uiState === 'confirmSignUp' && (
+                                <ConfirmSignUp 
+                                    onChange={onChange}
+                                    setUiState={setUiState}
+                                />
+                            )
+                        }
+                        {
+                            uiState === 'signIn' && (
+                                <SignIn 
+                                    onChange={onChange}
+                                    setUiState={setUiState}
+                                />
+                            )
+                        }
+                        {
+                            uiState === 'signedIn' && (
+                                <div>
+                                    <p
+                                        className="text-xl"
+                                        >Welcome, {user.attributes.email}</p>
+                                    <button
+                                        className="text-white w-full mt-10 bg-red-600 p-3 rounded"
+                                        onClick={() => {
+                                        Auth.signOut()
+                                        setUiState('signIn')
+                                        setUser(null)
+                                    }}
+                                    >Sign Out
+                                    </button>
+                                </div>
+                            )
+                        }
+                        {
+                            uiState === 'forgotPassword' && (
+                                    <ForgotPassword 
+                                        onChange={onChange}
+                                        setUiState={setUiState}
+                                    />
+                            )
+                        }
+                        {
+                            uiState === 'forgotPasswordConfirm' && (
+                                    <ForgotPasswordConfirm
+                                        onChange={onChange}
+                                        setUiState={setUiState}
+                                    />
                             )
                         }
                     </div>
