@@ -5,7 +5,7 @@ import SignUp from '../components/SignUp'
 import ConfirmSignUp from "../components/ConfirmSignUp"
 import SignIn from '../components/SignIn'
 import ForgotPassword from '../components/ForgotPassword'
-import ForgotPasswordSubmit from '../components/ForgotPasswordSubmit'
+import ForgotPasswordConfirm from '../components/ForgotPasswordConfirm'
 
 const initialState = {email: '', password: '', authCode: ''}
 
@@ -13,6 +13,7 @@ function Profile() {
     const [uiState, setUiState] = useState(null)
     const [formState, setFormState] = useState(initialState)
     const [user, setUser] = useState(null)
+    const { email, password, authCode} = uiState
 
     useEffect(() => {
         checkUser()
@@ -32,6 +33,49 @@ function Profile() {
         setFormState({ ...formState, [e.target.name]: e.target.value })
     }
 
+    async function signUp() {
+        try {
+            await Auth.signUp({
+                username: email, password, attributes: { email }
+            })
+            setUiState('confirmSignUp')
+        } catch(err) { 
+            console.log({ err })
+        }
+    }
+
+    async function confirmSignUp() {
+        try {
+        
+        } catch(err) {
+            console.log({ err })        
+        }
+    }
+
+    async function signIn() {
+        try {
+
+        } catch(err) {
+            console.log({ err })
+        }
+    }
+
+    async function forgotPassword() {
+        try {
+        
+        } catch(err) {
+            console.log({ err })
+        }
+    }
+
+    async function forgotPasswordConfirm() {
+        try {
+        
+        } catch(err) {
+            console.log({ err })        
+        }
+    }
+
     return (
         <div className="bg-gray-50 min-h-screen">
             <div className="flex flex-col items-center">
@@ -42,6 +86,7 @@ function Profile() {
                                 <SignUp 
                                     onChange={onChange}
                                     setUiState={setUiState}
+                                    signUp={signUp}
                                 />
                             )
                         }
