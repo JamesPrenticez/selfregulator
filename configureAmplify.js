@@ -8,6 +8,6 @@ Amplify.configure({
 )
 
 if (typeof window !== 'undefined') {
-  config.oauth.redirectSignIn = `${window.location.origin}/user/profile/`;
-  config.oauth.redirectSignOut = `${window.location.origin}/user/profile/`;
+  config.oauth.redirectSignIn = `${window.location.origin}/profile`;
+  config.oauth.redirectSignOut = `${window.location.origin}/profile`;
 }
