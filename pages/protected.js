@@ -9,7 +9,8 @@ export default function Protected() {
 
     useEffect(() => {
         checkUser()
-    }, [])
+    }, [checkUser])
+
 
     async function checkUser(){
         try {

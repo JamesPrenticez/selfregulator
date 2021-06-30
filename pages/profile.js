@@ -17,17 +17,7 @@ function Profile() {
 
     useEffect(() => {
         checkUser()
-        async function checkUser(){
-            try {
-                const user = await Auth.currentAuthenticatedUser()
-                setUser(user)
-                setUiState("signedIn")
-            } catch(err) {
-                setUser(null)
-                setUiState("signIn")
-            }
-        }
-    }, [])
+    }, [checkUser])
 
     async function checkUser(){
         try {
