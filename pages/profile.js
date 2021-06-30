@@ -1,4 +1,4 @@
-import { useState, useEffect, Profiler } from "react"
+import { useState, useEffect } from 'react'
 import { Auth } from 'aws-amplify'
 import '../configureAmplify'
 import SignUp from '../components/SignUp'
@@ -17,7 +17,7 @@ function Profile() {
 
     useEffect(() => {
         checkUser()
-    }, [])
+    }, [checkUser])
 
     async function checkUser(){
         try {
@@ -41,7 +41,7 @@ function Profile() {
                 password: password,
                 attributes: { email }
             })
-            setUiState('confirmSignUp')
+            setUiState("confirmSignUp")
         } catch(err) { 
             console.log({ err })
         }
@@ -50,7 +50,7 @@ function Profile() {
     async function confirmSignUp() {
         try {
             await Auth.confirmSignUp(email, authCode)
-            setUiState('signedIn')
+            setUiState("signedIn")
             signIn()
         } catch(err) {
             console.log({ err })        
@@ -60,7 +60,7 @@ function Profile() {
     async function signIn() {
         try {
             await Auth.signIn(email, password)
-            setUiState('signedIn')
+            setUiState("signedIn")
             checkUser()
         } catch(err) {
             console.log({ err })
@@ -70,7 +70,7 @@ function Profile() {
     async function forgotPassword() {
         try {
             await Auth.forgotPassword(email)
-            setUiState('forgotPasswordSubmit')
+            setUiState("forgotPasswordSubmit")
         } catch(err) {
             console.log({ err })
         }
@@ -91,7 +91,7 @@ function Profile() {
                 <div className="max-w-full sm:w-540 mt-14">
                     <div className="bg-white py-14 px-16 shadow-form rounded">
                             {
-                                uiState === 'signUp' && (
+                                uiState === "signUp" && (
                                     <SignUp 
                                         onChange={onChange}
                                         setUiState={setUiState}
@@ -100,7 +100,7 @@ function Profile() {
                                 )
                             }
                             {
-                                uiState === 'confirmSignUp' && (
+                                uiState === "confirmSignUp" && (
                                     <ConfirmSignUp 
                                         onChange={onChange}
                                         setUiState={setUiState}
@@ -109,7 +109,7 @@ function Profile() {
                                 )
                             }
                             {
-                                uiState === 'signIn' && (
+                                uiState === "signIn" && (
                                     <SignIn 
                                         onChange={onChange}
                                         setUiState={setUiState}
@@ -118,7 +118,7 @@ function Profile() {
                                 )
                             }
                             {
-                                (uiState === 'signedIn' && user) && (
+                                (uiState === "signedIn" && user) && (
                                     <div>
                                         <p
                                             className="text-xl"
@@ -127,7 +127,7 @@ function Profile() {
                                             className="text-white w-full mt-10 bg-red-600 p-3 rounded"
                                             onClick={() => {
                                             Auth.signOut()
-                                            setUiState('signIn')
+                                            setUiState("signIn")
                                             setUser(null)
                                         }}
                                         >Sign Out
@@ -136,7 +136,7 @@ function Profile() {
                                 )
                             }
                             {
-                                uiState === 'forgotPassword' && (
+                                uiState === "forgotPassword" && (
                                         <ForgotPassword 
                                             onChange={onChange}
                                             setUiState={setUiState}
@@ -145,7 +145,7 @@ function Profile() {
                                 )
                             }
                             {
-                                uiState === 'forgotPasswordSubmit' && (
+                                uiState === "forgotPasswordSubmit" && (
                                         <ForgotPasswordSubmit
                                             onChange={onChange}
                                             setUiState={setUiState}

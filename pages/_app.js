@@ -10,9 +10,6 @@ function MyApp({ Component, pageProps }) {
         <meta name="Self Regulator" content="Small habit daily return huge result over the long term" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet" />    
       </Head>
 
       <nav className="py-4 px-12 border-b border-gray-300">
@@ -29,7 +26,7 @@ function MyApp({ Component, pageProps }) {
         </Link>
       </nav>
 
-      <div className="font-mono">
+      <div>
         <Component {...pageProps} />
       </div>
     </>
