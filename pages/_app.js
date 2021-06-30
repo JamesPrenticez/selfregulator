@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>Self Regulator</title>
         <meta name="Self Regulator" content="Small habit daily return huge result over the long term" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black" />
         <link rel="icon" href="/favicon.ico" />
@@ -29,9 +29,9 @@ function MyApp({ Component, pageProps }) {
         </Link>
       </nav>
 
-      <body className="font-mono">
+      <div className="font-mono">
         <Component {...pageProps} />
-      </body>
+      </div>
     </>
   )
 }

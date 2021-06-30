@@ -1,7 +1,6 @@
-import { Auth } from 'aws-amplify'
 import Input from './Input'
 
-export default function ForgotPasswordConfirm({
+export default function ForgotPasswordSubmit({
     onChange, forgotPasswordSubmit
 }) {
    
@@ -9,12 +8,12 @@ export default function ForgotPasswordConfirm({
         <div>
             <p className="text-3xl font-black">Confirm new password</p>
 
-            <div className="mt-10">
+            <div className="mt-4">
                 <label className="text-sm">Confirmation Code</label>
                 <Input onChange={onChange} name="authCode"/>
             </div>
 
-            <div className="mt-10">
+            <div className="mt-4">
                 <label className="text-sm">New Password</label>
                 <Input type="password" onChange={onChange} name="password"/>
             </div>

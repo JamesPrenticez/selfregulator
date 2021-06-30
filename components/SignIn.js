@@ -11,7 +11,7 @@ export default function SignIn({
             <p className="text-3xl font-black">Sign into your account</p>
             <div className="mt-10">
                 <label className="text-sm">Email</label>
-                <Input onChange={onChange}/>
+                <Input onChange={onChange} name="email" id="email" type="email"/>
             </div>
 
 
