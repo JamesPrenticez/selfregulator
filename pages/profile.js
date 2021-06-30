@@ -17,7 +17,7 @@ function Profile() {
 
     useEffect(() => {
         checkUser()
-    }, [checkUser])
+    }, [])
 
     async function checkUser(){
         try {
