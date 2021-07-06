@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-selfregulator-dev-132618-unauthRole",
       "StackName": "amplify-selfregulator-dev-132618",
       "StackId": "arn:aws:cloudformation:us-east-1:114565175861:stack/amplify-selfregulator-dev-132618/8549e420-d61d-11eb-8a33-12e26def3eab",
-      "AmplifyAppId": "d302f3z7w5dwzc"
+      "AmplifyAppId": "d302f3z7w5dwzc",
+      "AuthTriggerTemplateURL": ""
     },
     "categories": {
       "auth": {
