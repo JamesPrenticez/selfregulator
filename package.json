@@ -5,16 +5,21 @@
   "scripts": {
     "fe": "npx nx serve selfregulator-frontend",
     "be": "npx nx serve selfregulator-backend",
+    "start-be": "node dist/apps/selfregulator/backend/main.js",
+    "build-be": "npx webpack --config apps/selfregulator/backend/webpack.config.js",
     "deploy-fe": "nx run selfregulator-frontend:deploy -- --dir=dist/apps/selfregulator/frontend",
     "deploy-be": "nx run selfregulator-backend:deploy -- --dir=dist/apps/selfregulator/backend"
   },
   "private": true,
   "dependencies": {
+    "@nx/node": "19.8.2",
     "axios": "^1.6.0",
     "express": "^4.18.1",
+    "nx": "19.8.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-router-dom": "6.11.2"
+    "react-router-dom": "6.11.2",
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
@@ -44,7 +49,7 @@
     "@vitest/ui": "^1.3.1",
     "autoprefixer": "10.4.13",
     "babel-jest": "^29.7.0",
-    "eslint": "^9.8.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "2.30.0",
     "eslint-plugin-jsx-a11y": "6.7.1",
