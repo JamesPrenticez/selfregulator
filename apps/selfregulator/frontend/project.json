@@ -11,5 +11,10 @@
     "environment:dev"
   ],
   "// targets": "to see all targets run: nx show project selfregulator-frontend --web",
-  "targets": {}
+  "targets": {
+    "deploy": {
+      "dependsOn": ["build"],
+      "command": "netlify deploy --dir=dist/selfregulator-frontend"
+    }
+  }
 }

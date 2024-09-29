@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "fe": "npx nx serve selfregulator-frontend",
-    "be": "npx nx serve selfregulator-backend"
+    "be": "npx nx serve selfregulator-backend",
+    "deploy-fe": "nx run selfregulator-frontend:deploy -- --dir=dist/apps/selfregulator/frontend",
+    "deploy-be": "nx run selfregulator-backend:deploy -- --dir=dist/apps/selfregulator/backend"
   },
   "private": true,
   "dependencies": {

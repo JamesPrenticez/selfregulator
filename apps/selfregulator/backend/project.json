@@ -5,6 +5,10 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "deploy": {
+      "dependsOn": ["build"],
+      "command": "netlify deploy --dir=dist/selfregulator-backend"
+    },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
