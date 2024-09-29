@@ -1,0 +1,26 @@
+{
+  "name": "selfregulator-backend",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/selfregulator/backend/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "selfregulator-backend:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "selfregulator-backend:build:development"
+        },
+        "production": {
+          "buildTarget": "selfregulator-backend:build:production"
+        }
+      }
+    }
+  }
+}
