@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "preinstall": "npm install",
+    "postinstall": "ls -la node_modules",
+    "build:be": "npx nx build selfregulator-backend",
     "fe": "npx nx serve selfregulator-frontend",
     "be": "npx nx serve selfregulator-backend",
-    "start-be": "node dist/apps/selfregulator/backend/main.js",
-    "build-be": "npx webpack --config apps/selfregulator/backend/webpack.config.js",
     "deploy-fe": "nx run selfregulator-frontend:deploy -- --dir=dist/apps/selfregulator/frontend",
     "deploy-be": "nx run selfregulator-backend:deploy -- --dir=dist/apps/selfregulator/backend"
   },
