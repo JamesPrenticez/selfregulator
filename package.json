@@ -8,7 +8,7 @@
     "start-be": "node dist/apps/selfregulator/backend/main.js",
     "build-be": "npx webpack --config apps/selfregulator/backend/webpack.config.js",
     "deploy-fe": "nx run selfregulator-frontend:deploy -- --dir=dist/apps/selfregulator/frontend",
-    "deploy-be": "nx run selfregulator-backend:deploy -- --dir=dist/apps/selfregulator/backend",
+    "deploy-be": "nx run selfregulator-backend:deploy -- --dir=dist/apps/selfregulator/backend"
   },
   "private": true,
   "dependencies": {
