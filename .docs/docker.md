@@ -1,0 +1,1 @@
+docker build -t selfregulator-be ./apps/selfregulator/backend
