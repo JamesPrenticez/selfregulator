@@ -1,21 +1,45 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
+import path from "path";
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
-import express from 'express';
-import * as path from 'path';
+import apiRoutes from "./routes/api";
 
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "./public/swagger.json";
+
+// Initialize express
 const app = express();
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+// Allow express to understand cookies (required for HttpOnly)
+app.use(cookieParser());
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to selfregulator-backend!' });
-});
+// Middleware for JSON parsing
+app.use(express.json());
 
-const port = process.env.PORT || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
+// Cross Origin
+app.use(
+  cors({
+    origin: process.env.BASE_URL,
+    credentials: true,
+  }),
+);
+
+// Set JSON formatting
+app.set("json spaces", 2);
+
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, "public")));
+
+// Serve swagger api docs
+app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
+// Start the server only if the database connection is successful
+const PORT = process.env.PORT || 5000;
+
+// Use routes
+app.use(apiRoutes);
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
-server.on('error', console.error);
